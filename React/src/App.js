@@ -1,6 +1,12 @@
+import FormularioCadastro from './components/FormularioCadastro';
+import ListaDeNotas from './components/ListaDeNotas'
+
 function App() {
   return (
-    <h1>Meu app react</h1>
+    <section>
+      <FormularioCadastro></FormularioCadastro>
+      <ListaDeNotas></ListaDeNotas>
+    </section>
   );
 }
 
