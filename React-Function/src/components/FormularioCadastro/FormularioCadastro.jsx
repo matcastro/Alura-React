@@ -1,15 +1,18 @@
 import React, {useState} from 'react';
 import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core"
 
-function FormularioCadastro() {
+function FormularioCadastro({aoEnviar}) {
     const [nome, setNome] = useState('')
     const [sobrenome, setSobrenome] = useState('')
+    const [cpf, setCpf] = useState('')
+    const [promocoes, setPromocoes] = useState(true)
+    const [novidades, setNovidades] = useState(true)
 
     return (
         <form onSubmit={
             (event) => {
                 event.preventDefault()
-                console.log(nome, sobrenome)
+                aoEnviar({nome, sobrenome, cpf, promocoes, novidades})
             }
             }>
             <TextField
@@ -33,6 +36,10 @@ function FormularioCadastro() {
                 margin='normal'
                 fullWidth />
             <TextField
+                value={cpf}
+                onChange={event => {
+                    setCpf(event.target.value)
+                }}
                 id="cpf"
                 label="CPF"
                 variant='outlined'
@@ -43,16 +50,23 @@ function FormularioCadastro() {
                 label='Promoções'
                 control={
                     <Switch
+                        onChange={event => {
+                            setPromocoes(event.target.checked)
+                        }}
                         name='promocoes'
-                        defaultChecked
+                        checked={promocoes}
                         color='primary' />
                 } />
             <FormControlLabel 
                 label='Novidades' 
                 control={
                     <Switch 
+                        onChange={event => {
+                            setNovidades(event.target.checked)
+                        }}
+
                         name='novidades' 
-                        defaultChecked 
+                        checked={novidades} 
                         color='primary' />
                 } />
 
