@@ -83,7 +83,7 @@ function DadosPessoais({aoEnviar, validarCPF}) {
             <Button 
                 variant='contained' 
                 color='primary' 
-                type='submit'>Cadastrar</Button>
+                type='submit'>Próximo</Button>
         </form>
     )
 }

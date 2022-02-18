@@ -1,13 +1,18 @@
 import { Button, TextField } from "@material-ui/core";
 import React from "react";
+import { useState } from "react";
 
 function DadosUsuario({aoEnviar}){
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
     return (
         <form onSubmit={(event) => {
             event.preventDefault()
-            aoEnviar()
+            aoEnviar({email, senha})
         }}>
-            <TextField 
+            <TextField
+                value={email}
+                onChange={(e) => { setEmail(e.target.value)}} 
                 id='email' 
                 label='email'
                 type='email'
@@ -16,6 +21,8 @@ function DadosUsuario({aoEnviar}){
                 margin='normal'
                 fullWidth></TextField>
             <TextField 
+                value={senha}
+                onChange={(e) => { setSenha(e.target.value)}}
                 id='senha' 
                 label='senha' 
                 type='password'
@@ -26,7 +33,7 @@ function DadosUsuario({aoEnviar}){
             <Button 
                 variant='contained' 
                 color='primary' 
-                type='submit'>Cadastrar</Button>
+                type='submit'>Próximo</Button>
         </form>
     )
 }
