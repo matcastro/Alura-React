@@ -10,7 +10,8 @@ export const calcularNovoSaldo = (valores, saldo) => {
   if (valores.transacao === 'deposito') {
     return saldo + parseInt(valores.valor)
   } else {
-    return saldo - parseInt(valores.valor);
+    const novoSaldo = saldo - parseInt(valores.valor)
+    return novoSaldo >= 0 ? novoSaldo : saldo;
   }
 }
 
